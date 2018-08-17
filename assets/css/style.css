@@ -1,0 +1,78 @@
+.gamebox {
+	position: relative;
+	box-sizing: border-box;
+	border: 3px solid white;
+	height: 500px;
+	width: 1100px;
+	margin: 0 auto;
+	margin-top: -100px;
+	background-color: black;
+	opacity: .7;
+
+}
+
+.container {
+	position: relative;
+	box-sizing: border-box;
+	background-image:url(../images/starwarsbackground.jpeg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-color: black;
+	height: 820px;
+}
+
+h1 {
+	height: 200px;
+	width: 200px;
+	border: 2px solid black;
+	color: white;
+	float: left;
+	border-radius: 30%;
+	text-align: center;
+	margin-right: 10px;
+	margin-top: 1%;
+
+}
+
+h2 {
+	color: white;
+	text-align: center;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	text-shadow: 3px 3px black;
+	font-size: 100px;
+	margin-top: 0;
+}
+
+.characters {
+	position: relative;
+	margin-left: 21%;
+}
+
+#obiwan {
+	box-sizing: border-box;
+	background-image:url(../images/obiwan.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 50%;
+}
+#luke {
+	box-sizing: border-box;
+	background-image:url(../images/lukeskywalker.jpeg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 50%;
+}
+#yoda {
+	box-sizing: border-box;
+	background-image:url(../images/yoda.jpeg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 50%;
+}
+#darth {
+	box-sizing: border-box;
+	background-image:url(../images/darthvader.jpeg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 50%;
+}
