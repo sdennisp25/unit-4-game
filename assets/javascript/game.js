@@ -1,43 +1,36 @@
 
+var obiwanLife = 100;
+var obiwanAttack = 20;
+
+var luke = 100;
+var yoda = 100;
+var darth = 100;
+var p = $('#obiwan').position();
 
 
+$(document).ready(function () {
 
-
-
-$(document).ready(function() {
-	var obiwan;
-	var luke;
-	var yoda;
-	var darth;
-	
-	$('#obiwan').on('click', function() {
+	$('#obiwan').on('click', function () {
 		$('#obiwan').html('Obiwan');
-			$('#obiwan').appendTo('.gamebox');
-				$('#obiwan').animate({
-					left: '250px',
-				});
+		$('#obiwan').appendTo('.box1');
+		// document.getElementById('obiwan') = obiwan;
 	});
-	$('#luke').on('click', function() {
+	$('#luke').on('click', function () {
 		$('#luke').html('Luke');
-			$('#luke').appendTo('.gamebox');
-				$('#luke').animate({
-					right: '250px',
-				});
+		$('#luke').appendTo('.box1');
+
 	});
-	$('#yoda').on('click', function() {
+	$('#yoda').on('click', function () {
 		$('#yoda').html('Yoda');
-			$('#yoda').appendTo('.gamebox');
-				$('#yoda').animate({
-					right: '250px',
-				});
+		$('#yoda').appendTo('.box1');
+
 	});
-	$('#darth').on('click', function() {
+	$('#darth').on('click', function () {
 		$('#Darth').html('Darth');
-			$('#darth').appendTo('.gamebox');
-				$('#darth').animate({
-					right: '250px',
-				});
+		$('#darth').appendTo('.box1');
+		
 	});
+
 
 
 

@@ -8,6 +8,7 @@
 	margin-top: -100px;
 	background-color: black;
 	opacity: .7;
+	padding: 10px;
 
 }
 
@@ -19,6 +20,14 @@
 	background-size: cover;
 	background-color: black;
 	height: 820px;
+}
+
+button {
+	position: absolute;
+	margin-bottom: 0;
+	font-weight: bold;
+	height: 30px;
+	width: 130px;
 }
 
 h1 {
@@ -41,6 +50,32 @@ h2 {
 	text-shadow: 3px 3px black;
 	font-size: 100px;
 	margin-top: 0;
+}
+
+h3 {
+	text-align: center;
+	margin-top: 78%;
+}
+
+.box1 {
+	position: relative;
+	box-sizing: border-box;
+	height: 430px;
+	width: 50%;
+	margin:0 auto;
+	float: left;
+	color: blue;
+	margin-top: 3%;
+}
+
+.box2 {
+	position: relative;
+	box-sizing: border-box;
+	height: 430px;
+	width: 50%;
+	float: left;
+	color: red;
+	margin-top: 3%;
 }
 
 .characters {
