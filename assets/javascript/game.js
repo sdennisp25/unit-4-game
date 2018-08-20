@@ -2,43 +2,50 @@ var playerChoosing = false;
 var opponentChoosing = false;
 var fighting = false;
 
-
-
-
-
-var obiwanLife = 100;
+var obiwanLife = 120;
 var obiwanAttack = 20;
+var obiwanCounter = 15;
 
-var luke = 100;
-var yoda = 100;
-var darth = 100;
-// var p = $('#obiwan').position();
+var lukeLife = 100;
+var lukeAttack = 15;
+var lukeCounter = 10;
 
+var yodaLife = 80;
+var yodaAttack = 10;
+var yodaCounter = 5;
+
+var darthLife = 150;
+var darthAttack = 30;
+var darthCounter = 25;
+
+
+alert("Press START to play!")
 
 $(document).ready(function () {
-
 	$("#start-game-button").on("click", function(){
 		playerChoosing = true;
 	})
-
-	$('#obiwan').on('click', function () {
-
-
+	
+	$("#obiwan").on('click', function () {
+		
+		
 		if(playerChoosing){
 			$('#obiwan').html('Obiwan');
 			$('#obiwan').appendTo('.box1');
 			playerChoosing = false;
 			opponentChoosing = true;
-			
-			
-			
-			
-			
+			$(".lifeDisplay").html(obiwanLife);
+			$(".attackDisplay").html(obiwanAttack);
+			$(".counterDisplay").html(obiwanCounter);
+
 		}else {
 			$('#obiwan').html('Obiwan');
 			$('#obiwan').appendTo('.box2');
+			$(".enemyDisplay").html(obiwanLife);
+			$(".enemyAttack").html(obiwanAttack);
+			$(".enemyCounter").html(obiwanCounter);
 		}
-		alert("Your life points" + obiwanLife);
+
 	});
 
 
@@ -48,9 +55,16 @@ $(document).ready(function () {
 			$('#luke').appendTo('.box1');
 			playerChoosing = false;
 			opponentChoosing = true;
+			$(".lifeDisplay").html(lukeLife);
+			$(".attackDisplay").html(lukeAttack);
+			$(".counterDisplay").html(lukeCounter);
+
 		}else {
 			$('#luke').html('Luke');
 			$('#luke').appendTo('.box2');
+			$(".enemyDisplay").html(lukeLife);
+			$(".enemyAttack").html(lukeAttack);
+			$(".enemyCounter").html(lukeCounter);
 		}
 	});
 
@@ -63,9 +77,16 @@ $(document).ready(function () {
 			$('#yoda').appendTo('.box1');
 			playerChoosing = false;
 			opponentChoosing = true;
+			$(".lifeDisplay").html(yodaLife);
+			$(".attackDisplay").html(yodaAttack);
+			$(".counterDisplay").html(yodaCounter);
+
 		}else {
 			$('#yoda').html('Yoda');
 			$('#yoda').appendTo('.box2');
+			$(".enemyDisplay").html(yodaLife);
+			$(".enemyAttack").html(yodaAttack);
+			$(".enemyCounter").html(yodaCounter);
 		}
 	});
 
@@ -78,13 +99,27 @@ $(document).ready(function () {
 			$('#darth').appendTo('.box1');
 			playerChoosing = false;
 			opponentChoosing = true;
+			$(".lifeDisplay").html(darthLife);
+			$(".attackDisplay").html(darthAttack);
+			$(".counterDisplay").html(darthCounter);
+
 		}else {
 			$('#darth').html('Darth');
 			$('#darth').appendTo('.box2');
+			$(".enemyDisplay").html(darthLife);
+			$(".enemyAttack").html(darthAttack);
+			$(".enemyCounter").html(darthCounter);
 		}
 	});
 
+	$(".attack").on("click", function() {
+		if (playerChoosing === opponentChoosing) {
 
+		}
+		obiwanLife--;
+		$(".lifeDisplay").html(obiwanLife);
+
+	});
 
 
 });
