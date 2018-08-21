@@ -2,21 +2,37 @@ var playerChoosing = false;
 var opponentChoosing = false;
 var fighting = false;
 
-var obiwanLife = 120;
-var obiwanAttack = 20;
-var obiwanCounter = 15;
+var fighter1;
+var fighter2;
+var losers = [];
+//keep track of the character selected and now once you select player 1 and player 2, if the opponent loses, push the character into the empty array and not display it.
 
-var lukeLife = 100;
-var lukeAttack = 15;
-var lukeCounter = 10;
 
-var yodaLife = 80;
-var yodaAttack = 10;
-var yodaCounter = 5;
 
-var darthLife = 150;
-var darthAttack = 30;
-var darthCounter = 25;
+var obiwan = {
+	Life: 120,
+	Attack: 20,
+	Counter: 15
+	};
+	
+var luke = {
+	Life: 100,
+	Attack: 15,
+	Counter: 10
+	};
+	
+var yoda = {
+	Life: 80,
+	Attack: 10,
+	Counter: 5
+	};
+	
+var darth = {
+	Life: 150,
+	Attack: 30,
+	Counter: 25
+	};
+
 
 
 alert("Press START to play!")
@@ -34,16 +50,18 @@ $(document).ready(function () {
 			$('#obiwan').appendTo('.box1');
 			playerChoosing = false;
 			opponentChoosing = true;
-			$(".lifeDisplay").html(obiwanLife);
-			$(".attackDisplay").html(obiwanAttack);
-			$(".counterDisplay").html(obiwanCounter);
+			fighter1 = obiwan;
+			$(".lifeDisplay").html(obiwan.Life);
+			$(".attackDisplay").html(obiwan.Attack);
+			$(".counterDisplay").html(obiwan.Counter);
 
 		}else {
 			$('#obiwan').html('Obiwan');
 			$('#obiwan').appendTo('.box2');
-			$(".enemyDisplay").html(obiwanLife);
-			$(".enemyAttack").html(obiwanAttack);
-			$(".enemyCounter").html(obiwanCounter);
+			$(".enemyDisplay").html(obiwan.Life);
+			$(".enemyAttack").html(obiwan.Attack);
+			$(".enemyCounter").html(obiwan.Counter);
+			fighter2 = obiwan;
 		}
 
 	});
@@ -55,38 +73,41 @@ $(document).ready(function () {
 			$('#luke').appendTo('.box1');
 			playerChoosing = false;
 			opponentChoosing = true;
-			$(".lifeDisplay").html(lukeLife);
-			$(".attackDisplay").html(lukeAttack);
-			$(".counterDisplay").html(lukeCounter);
+			fighter1 = luke;
+			$(".lifeDisplay").html(luke.Life);
+			$(".attackDisplay").html(luke.Attack);
+			$(".counterDisplay").html(luke.Counter);
 
 		}else {
 			$('#luke').html('Luke');
 			$('#luke').appendTo('.box2');
-			$(".enemyDisplay").html(lukeLife);
-			$(".enemyAttack").html(lukeAttack);
-			$(".enemyCounter").html(lukeCounter);
+			$(".enemyDisplay").html(luke.Life);
+			$(".enemyAttack").html(luke.Attack);
+			$(".enemyCounter").html(luke.Counter);
+			fighter2 = luke;
 		}
 	});
 
 
 	$('#yoda').on('click', function () {
-		$('#yoda').html('Yoda');
-		$('#yoda').appendTo('.box1');
+
 		if(playerChoosing){
 			$('#yoda').html('Yoda');
 			$('#yoda').appendTo('.box1');
 			playerChoosing = false;
 			opponentChoosing = true;
-			$(".lifeDisplay").html(yodaLife);
-			$(".attackDisplay").html(yodaAttack);
-			$(".counterDisplay").html(yodaCounter);
+			fighter1 = yoda;
+			$(".lifeDisplay").html(yoda.Life);
+			$(".attackDisplay").html(yoda.Attack);
+			$(".counterDisplay").html(yoda.Counter);
 
 		}else {
 			$('#yoda').html('Yoda');
 			$('#yoda').appendTo('.box2');
-			$(".enemyDisplay").html(yodaLife);
-			$(".enemyAttack").html(yodaAttack);
-			$(".enemyCounter").html(yodaCounter);
+			$(".enemyDisplay").html(yoda.Life);
+			$(".enemyAttack").html(yoda.Attack);
+			$(".enemyCounter").html(yoda.Counter);
+			fighter2 = yoda;
 		}
 	});
 
@@ -99,26 +120,38 @@ $(document).ready(function () {
 			$('#darth').appendTo('.box1');
 			playerChoosing = false;
 			opponentChoosing = true;
-			$(".lifeDisplay").html(darthLife);
-			$(".attackDisplay").html(darthAttack);
-			$(".counterDisplay").html(darthCounter);
+			fighter1 = darth;
+			$(".lifeDisplay").html(darth.Life);
+			$(".attackDisplay").html(darth.Attack);
+			$(".counterDisplay").html(darth.Counter);
 
 		}else {
 			$('#darth').html('Darth');
 			$('#darth').appendTo('.box2');
-			$(".enemyDisplay").html(darthLife);
-			$(".enemyAttack").html(darthAttack);
-			$(".enemyCounter").html(darthCounter);
+			$(".enemyDisplay").html(darth.Life);
+			$(".enemyAttack").html(darth.Attack);
+			$(".enemyCounter").html(darth.Counter);
+			fighter2 = darth;
+
 		}
 	});
 
 	$(".attack").on("click", function() {
-		if (playerChoosing === opponentChoosing) {
-
+		if (fighter1) {
+			fighter2.Life = fighter2.Life - fighter1.Attack;
+			fighter1.Life = fighter1.Life - fighter2.Counter;
+			$(".enemyDisplay").html(fighter2.Life);
+			$(".lifeDisplay").html(fighter1.Life);
+			console.log(fighter2.Life);
 		}
-		obiwanLife--;
-		$(".lifeDisplay").html(obiwanLife);
 
+		if (fighter2.Life <= 0 ){
+			alert("YOU WIN YOU FILTHY ANIMAL");
+		}
+
+		if (fighter1.Life <= 0 ){
+			alert("LOSER!!!");
+		}
 	});
 
 
