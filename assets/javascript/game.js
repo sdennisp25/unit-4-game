@@ -55,7 +55,9 @@ $(document).ready(function () {
 			$(".attackDisplay").html(obiwan.Attack);
 			$(".counterDisplay").html(obiwan.Counter);
 
-		}else {
+		}else if (opponentChoosing) {
+			opponentChoosing = false;
+			fighting = true;
 			$('#obiwan').html('Obiwan');
 			$('#obiwan').appendTo('.box2');
 			$(".enemyDisplay").html(obiwan.Life);
@@ -78,7 +80,9 @@ $(document).ready(function () {
 			$(".attackDisplay").html(luke.Attack);
 			$(".counterDisplay").html(luke.Counter);
 
-		}else {
+		}else if (opponentChoosing) {
+			opponentChoosing = false;
+			fighting = true;
 			$('#luke').html('Luke');
 			$('#luke').appendTo('.box2');
 			$(".enemyDisplay").html(luke.Life);
@@ -101,7 +105,9 @@ $(document).ready(function () {
 			$(".attackDisplay").html(yoda.Attack);
 			$(".counterDisplay").html(yoda.Counter);
 
-		}else {
+		}else if (opponentChoosing) {
+			opponentChoosing = false;
+			fighting = true;
 			$('#yoda').html('Yoda');
 			$('#yoda').appendTo('.box2');
 			$(".enemyDisplay").html(yoda.Life);
@@ -125,7 +131,9 @@ $(document).ready(function () {
 			$(".attackDisplay").html(darth.Attack);
 			$(".counterDisplay").html(darth.Counter);
 
-		}else {
+		}else if (opponentChoosing) {
+			opponentChoosing = false;
+			fighting = true;
 			$('#darth').html('Darth');
 			$('#darth').appendTo('.box2');
 			$(".enemyDisplay").html(darth.Life);
@@ -146,12 +154,19 @@ $(document).ready(function () {
 		}
 
 		if (fighter2.Life <= 0 ){
-			alert("YOU WIN YOU FILTHY ANIMAL");
+
+			alert("YOU WIN");
+			$(".box2").empty();
+			$(".box2").html("<h3>Your Opponent</h3>");
+			fighter = false;
+			opponentChoosing = true;
 		}
 
 		if (fighter1.Life <= 0 ){
 			alert("LOSER!!!");
 		}
+
+
 	});
 
 
