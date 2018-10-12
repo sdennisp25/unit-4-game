@@ -1,51 +1,44 @@
+// conditions set before the game begins
 var playerChoosing = false;
 var opponentChoosing = false;
 var fighting = false;
+var fighter1; // keeps track of fighter 1
+var fighter2; // keeps track of fighter 2
 
-var fighter1;
-var fighter2;
-var losers = [];
-//keep track of the character selected and now once you select player 1 and player 2, if the opponent loses, push the character into the empty array and not display it.
-
-
-
-var obiwan = {
+var obiwan = { //object for Obiwan
 	Life: 120,
 	Attack: 20,
 	Counter: 15
-	};
-	
-var luke = {
+};
+
+var luke = { // object for Luke
 	Life: 100,
 	Attack: 15,
 	Counter: 10
-	};
-	
-var yoda = {
+};
+
+var yoda = { //object for Yoda
 	Life: 80,
 	Attack: 10,
 	Counter: 5
-	};
-	
-var darth = {
+};
+
+var darth = { //object for Darth
 	Life: 150,
 	Attack: 30,
 	Counter: 25
-	};
-
-
+};
 
 alert("Press START to play!")
 
 $(document).ready(function () {
-	$("#start-game-button").on("click", function(){
+	$("#start-game-button").on("click", function () {
 		playerChoosing = true;
 	})
-	
+
+	// if Obiwan is chosen, everyone else is the enemy
 	$("#obiwan").on('click', function () {
-		
-		
-		if(playerChoosing){
+		if (playerChoosing) {
 			$('#obiwan').html('Obiwan');
 			$('#obiwan').appendTo('.box1');
 			playerChoosing = false;
@@ -55,7 +48,7 @@ $(document).ready(function () {
 			$(".attackDisplay").html(obiwan.Attack);
 			$(".counterDisplay").html(obiwan.Counter);
 
-		}else if (opponentChoosing) {
+		} else if (opponentChoosing) {
 			opponentChoosing = false;
 			fighting = true;
 			$('#obiwan').html('Obiwan');
@@ -68,9 +61,9 @@ $(document).ready(function () {
 
 	});
 
-
+	// if Luke is chosen, everyone else is the enemy
 	$('#luke').on('click', function () {
-		if(playerChoosing){
+		if (playerChoosing) {
 			$('#luke').html('Luke');
 			$('#luke').appendTo('.box1');
 			playerChoosing = false;
@@ -80,7 +73,7 @@ $(document).ready(function () {
 			$(".attackDisplay").html(luke.Attack);
 			$(".counterDisplay").html(luke.Counter);
 
-		}else if (opponentChoosing) {
+		} else if (opponentChoosing) {
 			opponentChoosing = false;
 			fighting = true;
 			$('#luke').html('Luke');
@@ -92,10 +85,9 @@ $(document).ready(function () {
 		}
 	});
 
-
+	// if Yoda is chosen, everyone else is the enemy
 	$('#yoda').on('click', function () {
-
-		if(playerChoosing){
+		if (playerChoosing) {
 			$('#yoda').html('Yoda');
 			$('#yoda').appendTo('.box1');
 			playerChoosing = false;
@@ -105,7 +97,7 @@ $(document).ready(function () {
 			$(".attackDisplay").html(yoda.Attack);
 			$(".counterDisplay").html(yoda.Counter);
 
-		}else if (opponentChoosing) {
+		} else if (opponentChoosing) {
 			opponentChoosing = false;
 			fighting = true;
 			$('#yoda').html('Yoda');
@@ -117,11 +109,9 @@ $(document).ready(function () {
 		}
 	});
 
-
+	// if Darth is chosen, everyone else is the enemy
 	$('#darth').on('click', function () {
-		$('#darth').html('Darth');
-		$('#darth').appendTo('.box1');
-		if(playerChoosing){
+		if (playerChoosing) {
 			$('#darth').html('Darth');
 			$('#darth').appendTo('.box1');
 			playerChoosing = false;
@@ -131,7 +121,7 @@ $(document).ready(function () {
 			$(".attackDisplay").html(darth.Attack);
 			$(".counterDisplay").html(darth.Counter);
 
-		}else if (opponentChoosing) {
+		} else if (opponentChoosing) {
 			opponentChoosing = false;
 			fighting = true;
 			$('#darth').html('Darth');
@@ -144,7 +134,8 @@ $(document).ready(function () {
 		}
 	});
 
-	$(".attack").on("click", function() {
+	// Once fighter 1 and 2 are chosen, keep track of the attack/life of both
+	$(".attack").on("click", function () {
 		if (fighter1) {
 			fighter2.Life = fighter2.Life - fighter1.Attack;
 			fighter1.Life = fighter1.Life - fighter2.Counter;
@@ -152,22 +143,30 @@ $(document).ready(function () {
 			$(".lifeDisplay").html(fighter1.Life);
 			console.log(fighter2.Life);
 		}
-
-		if (fighter2.Life <= 0 ){
-
+		// Conditions set, enemy life is <0 then you WIN, else LOSE
+		if (fighter2.Life <= 0) {
 			alert("YOU WIN");
-			$(".box2").empty();
+			// $(".box2").empty();
+			$("opponentChoosing").hide();
+			// $(".box2").hide()
 			$(".box2").html("<h3>Your Opponent</h3>");
 			fighter = false;
 			opponentChoosing = true;
 		}
 
-		if (fighter1.Life <= 0 ){
+		if (fighter1.Life <= 0) {
 			alert("LOSER!!!");
 		}
 
-
 	});
 
-
+	$("#resetGame").on("click", function () {
+		playerChoosing = true;
+		opponentChoosing = false;
+		$('#obiwan').appendTo('.characters');
+		$('#luke').appendTo('.characters');
+		$('#yoda').appendTo('.characters');
+		$('#darth').appendTo('.characters');
+	});
 });
+
